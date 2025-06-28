@@ -163,3 +163,5 @@ artifacts/*
 
 .venv/
 *.zip
+*.pyd
+*.dll
