@@ -166,3 +166,4 @@ artifacts/*
 *.pyd
 *.dll
 .env
+scores.json
