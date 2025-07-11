@@ -3,6 +3,13 @@ from cnnClassifier.pipeline.stage_01_data_ingestion import DataIngestionTraining
 from cnnClassifier.pipeline.stage_02_prepare_base_model import PrepareBaseModelTrainingPipeline
 from cnnClassifier.pipeline.stage_03_model_training import ModelTrainingPipeline
 from cnnClassifier.pipeline.stage_04_model_evaluation import EvaluationPipeline
+import os
+
+
+os.environ["MLFLOW_TRACKING_URI"] = "https://dagshub.com/saiskrithik.k/kidney-tumor.mlflow"
+os.environ["MLFLOW_TRACKING_USERNAME"] = "saiskrithik.k"
+os.environ["MLFLOW_TRACKING_PASSWORD"] = "4eea8f63a1f4bb90c2b5e41a72a2f8c055b47286"
+
 
 STAGE_NAME = "Data Ingestion stage"
 try:
