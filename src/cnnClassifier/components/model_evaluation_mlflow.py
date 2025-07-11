@@ -6,6 +6,9 @@ from urllib.parse import urlparse
 from cnnClassifier.entity.config_entity import EvaluationConfig
 from cnnClassifier.utils.common import read_yaml, create_directories,save_json
 
+from dotenv import load_dotenv
+load_dotenv()
+
 
 class Evaluation:
     def __init__(self, config: EvaluationConfig):

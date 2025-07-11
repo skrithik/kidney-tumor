@@ -165,3 +165,4 @@ artifacts/*
 *.zip
 *.pyd
 *.dll
+.env
