@@ -167,3 +167,6 @@ artifacts/*
 *.dll
 .env
 scores.json
+model/
+logs/
+inputImage.jpg
