@@ -14,11 +14,11 @@ class ModelTrainingPipeline:
 
     def main(self):
         config = ConfigurationManager()
-        training_config = config.get_training_config()
+        training_config = config.get_training_config()#Reads TrainingConfig (paths + hyperparams).
         training = Training(config=training_config)
-        training.get_base_model()
-        training.train_valid_generator()
-        training.train()
+        training.get_base_model()#Load the updated base model (VGG16 + Dense layer).
+        training.train_valid_generator()#Create training & validation data generators.
+        training.train()#Train the model.
 
 
 

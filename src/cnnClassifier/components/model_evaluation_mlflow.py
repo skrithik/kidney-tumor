@@ -19,7 +19,7 @@ class Evaluation:
 
         datagenerator_kwargs = dict(
             rescale = 1./255,
-            validation_split=0.30
+            validation_split=0.30#Splits 30% of dataset for validation.
         )
 
         dataflow_kwargs = dict(
@@ -40,7 +40,7 @@ class Evaluation:
         )
 
 
-    @staticmethod
+    @staticmethod#regular function that happens to live inside a class
     def load_model(path: Path) -> tf.keras.Model:
         return tf.keras.models.load_model(path)
     
@@ -57,7 +57,7 @@ class Evaluation:
 
     
     def log_into_mlflow(self):
-        mlflow.set_tracking_uri(self.config.mlflow_uri)
+        mlflow.set_tracking_uri(self.config.mlflow_uri)#Connects to MLflow tracking server (hosted on DagsHub)
         tracking_url_type_store = urlparse(mlflow.get_tracking_uri()).scheme
         
         with mlflow.start_run():
@@ -65,7 +65,9 @@ class Evaluation:
             mlflow.log_metrics(
                 {"loss": self.score[0], "accuracy": self.score[1]}
             )
-            # Model registry does not work with file store
+            #Logs hyperparameters (from params.yaml).
+            # Logs metrics (loss, accuracy).
+
             if tracking_url_type_store != "file":
 
                 # Register the model

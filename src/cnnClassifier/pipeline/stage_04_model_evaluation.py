@@ -15,9 +15,9 @@ class EvaluationPipeline:
         config = ConfigurationManager()
         eval_config = config.get_evaluation_config()
         evaluation = Evaluation(eval_config)
-        evaluation.evaluation()
-        evaluation.save_score()
-        evaluation.log_into_mlflow()
+        evaluation.evaluation()#load trained model, run validation
+        evaluation.save_score()#save loss & accuracy to scores.json
+        evaluation.log_into_mlflow()#log metrics + model into MLflow tracking server.
 
 
 

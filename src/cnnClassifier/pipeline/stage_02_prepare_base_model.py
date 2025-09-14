@@ -10,10 +10,10 @@ class PrepareBaseModelTrainingPipeline:
 
     def main(self):
         config = ConfigurationManager()
-        prepare_base_model_config = config.get_prepare_base_model_config()
+        prepare_base_model_config = config.get_prepare_base_model_config()#Reads configuration for base model preparation.
         prepare_base_model = PrepareBaseModel(config=prepare_base_model_config)
-        prepare_base_model.get_base_model()
-        prepare_base_model.update_base_model()
+        prepare_base_model.get_base_model()#Create the base VGG16 model.
+        prepare_base_model.update_base_model()#Customize it by adding new layers and freezing original layers.
 
 
     

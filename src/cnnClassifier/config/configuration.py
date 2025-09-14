@@ -7,7 +7,7 @@ from cnnClassifier.entity.config_entity import (DataIngestionConfig,
                                                 EvaluationConfig)
 
 
-class ConfigurationManager:
+class ConfigurationManager:  #Reads config.yaml and params.yaml into self.config and self.params
     def __init__(
         self,
         config_filepath = CONFIG_FILE_PATH,
@@ -20,11 +20,11 @@ class ConfigurationManager:
 
 
     
-    def get_data_ingestion_config(self) -> DataIngestionConfig:
+    def get_data_ingestion_config(self) -> DataIngestionConfig: #Returns a structured DataIngestionConfig object.
         config = self.config.data_ingestion
 
         create_directories([config.root_dir])
-
+        #Extracts data ingestion parameters from config.
         data_ingestion_config = DataIngestionConfig(
             root_dir=config.root_dir,
             source_URL=config.source_URL,
@@ -37,11 +37,11 @@ class ConfigurationManager:
 
 
     
-    def get_prepare_base_model_config(self) -> PrepareBaseModelConfig:
+    def get_prepare_base_model_config(self) -> PrepareBaseModelConfig: #Returns structured PrepareBaseModelConfig object.
         config = self.config.prepare_base_model
         
         create_directories([config.root_dir])
-
+        #Extracts base model config values (paths + hyperparameters)
         prepare_base_model_config = PrepareBaseModelConfig(
             root_dir=Path(config.root_dir),
             base_model_path=Path(config.base_model_path),
@@ -66,7 +66,11 @@ class ConfigurationManager:
         create_directories([
             Path(training.root_dir)
         ])
+# Builds structured TrainingConfig object containing:
 
+# Paths for data & model.
+
+# Hyperparameters (batch size, epochs, augmentation flag).
         training_config = TrainingConfig(
             root_dir=Path(training.root_dir),
             trained_model_path=Path(training.trained_model_path),
@@ -82,7 +86,7 @@ class ConfigurationManager:
     
 
 
-    def get_evaluation_config(self) -> EvaluationConfig:
+    def get_evaluation_config(self) -> EvaluationConfig: #Returns a structured EvaluationConfig
         eval_config = EvaluationConfig(
             path_of_model="artifacts/training/model.h5",
             training_data="artifacts/data_ingestion/kidney-ct-scan-images",

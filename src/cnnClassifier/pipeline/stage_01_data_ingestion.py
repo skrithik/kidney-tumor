@@ -9,11 +9,11 @@ class DataIngestionTrainingPipeline:
         pass
 
     def main(self):
-        config = ConfigurationManager()
-        data_ingestion_config = config.get_data_ingestion_config()
+        config = ConfigurationManager()#Reads config → Creates structured config object for data ingestion.
+        data_ingestion_config = config.get_data_ingestion_config()#Initializes DataIngestion component with config.
         data_ingestion = DataIngestion(config=data_ingestion_config)
-        data_ingestion.download_file()
-        data_ingestion.extract_zip_file()
+        data_ingestion.download_file()#Downloads dataset zip.
+        data_ingestion.extract_zip_file()#Extracts dataset zip.
 
 
 
