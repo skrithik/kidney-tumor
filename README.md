@@ -19,7 +19,7 @@
 # How to run?
 ### STEPS:
 
-Clone the repository
+Clone the repository. 
 
 ```bash
 https://github.com/skrithik/kidney-tumor
